@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "802072297266",
+    "project_id": "changemaker-22f3c",
+    "storage_bucket": "changemaker-22f3c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802072297266:android:b949d106045e46e068e12b",
+        "android_client_info": {
+          "package_name": "com.example.changemaker_flutter_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdorhPFwp4CpOhozmoRoxARc3cu4CVtDM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
