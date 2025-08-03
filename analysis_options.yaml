@@ -7,6 +7,8 @@ linter:
 analyzer:
   plugins:
     - custom_lint
+  errors:
+    invalid_annotation_target: ignore
 
 
 custom_lint:

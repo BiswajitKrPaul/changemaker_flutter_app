@@ -12,7 +12,20 @@
           "package_name": "com.example.changemaker_flutter_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "802072297266-ebieotkuiqboitu3t9lbg6omt11gaelh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.changemaker_flutter_app",
+            "certificate_hash": "43380c912ae0e2411e0810d205a2495d5f095ba4"
+          }
+        },
+        {
+          "client_id": "802072297266-c5t2j70ccjo0qpus2dr2190559uvsc4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAdorhPFwp4CpOhozmoRoxARc3cu4CVtDM"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "802072297266-c5t2j70ccjo0qpus2dr2190559uvsc4l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "802072297266-81ppprf27tnjm5pqno0914mumbl8l6mj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.changemakerFlutterApp"
+              }
+            }
+          ]
         }
       }
     }

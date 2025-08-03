@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -63,6 +60,19 @@ class DefaultFirebaseOptions {
     messagingSenderId: '802072297266',
     projectId: 'changemaker-22f3c',
     storageBucket: 'changemaker-22f3c.firebasestorage.app',
+    androidClientId: '802072297266-ebieotkuiqboitu3t9lbg6omt11gaelh.apps.googleusercontent.com',
+    iosClientId: '802072297266-81ppprf27tnjm5pqno0914mumbl8l6mj.apps.googleusercontent.com',
     iosBundleId: 'com.example.changemakerFlutterApp',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDHOwTyNRavMTaVxeM0OAxjqQNLnptGobY',
+    appId: '1:802072297266:web:032b25dc4ad6455568e12b',
+    messagingSenderId: '802072297266',
+    projectId: 'changemaker-22f3c',
+    authDomain: 'changemaker-22f3c.firebaseapp.com',
+    storageBucket: 'changemaker-22f3c.firebasestorage.app',
+    measurementId: 'G-3VLXZEFPHS',
+  );
+
 }
