@@ -13,6 +13,7 @@ class AppRouter extends RootStackRouter {
   List<AutoRoute> get routes => [
     AutoRoute(page: LoginPageRoute.page, path: '/login'),
     AutoRoute(page: HomePageRoute.page, initial: true, path: '/home'),
+    AutoRoute(page: RegisterPageRoute.page, path: '/register'),
   ];
 
   @override
@@ -20,7 +21,9 @@ class AppRouter extends RootStackRouter {
     AutoRouteGuard.simple(
       (resolver, router) {
         final currentUser = ref.read(firebaseAuthProvider).currentUser;
-        if (currentUser != null || resolver.routeName == LoginPageRoute.name) {
+        if (currentUser != null ||
+            resolver.routeName == LoginPageRoute.name ||
+            resolver.routeName == RegisterPageRoute.name) {
           resolver.next();
         } else {
           resolver.redirectUntil(LoginPageRoute());

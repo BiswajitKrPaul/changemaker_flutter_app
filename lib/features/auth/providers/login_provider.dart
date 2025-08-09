@@ -1,11 +1,12 @@
 import 'package:changemaker_flutter_app/app_router.dart';
 import 'package:changemaker_flutter_app/app_router.gr.dart';
 import 'package:changemaker_flutter_app/domain/firebase_providers.dart';
+import 'package:changemaker_flutter_app/domain/user_store.dart';
 import 'package:changemaker_flutter_app/features/auth/providers/auth_provider.dart';
 import 'package:changemaker_flutter_app/utils/app_utils.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:form_validator/form_validator.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -26,6 +27,12 @@ class LoginStateNotifier extends Notifier<LoginState> {
   @override
   LoginState build() {
     return const LoginState();
+  }
+
+  bool isButtonEnanbled() {
+    final v1 = ValidationBuilder().email().build();
+    final v2 = ValidationBuilder().minLength(6).build();
+    return v1(state.email) != null || v2(state.password) != null;
   }
 
   void updateEmail(String email) {
@@ -65,7 +72,7 @@ class LoginStateNotifier extends Notifier<LoginState> {
           .where('uid', isEqualTo: userCredential.user!.uid)
           .get();
       if (data.size == 0) {
-        await _saveUserDetails(userCredential);
+        await ref.read(userStoreProvider).saveUserDetails(userCredential);
       }
       if (ref.mounted) {
         await ref.read(routeProvider).replaceAll([const HomePageRoute()]);
@@ -96,7 +103,7 @@ class LoginStateNotifier extends Notifier<LoginState> {
             .where('uid', isEqualTo: userCreds.user!.uid)
             .get();
         if (data.size == 0) {
-          await _saveUserDetails(userCreds);
+          await ref.read(userStoreProvider).saveUserDetails(userCreds);
         }
         if (ref.mounted) {
           await ref.read(routeProvider).replaceAll([const HomePageRoute()]);
@@ -112,16 +119,10 @@ class LoginStateNotifier extends Notifier<LoginState> {
       state = state.copyWith(isLoading: false);
     }
   }
-
-  Future<void> _saveUserDetails(UserCredential userCreds) async {
-    await ref.read(userCollectionProvider).doc(userCreds.user!.uid).set({
-      'uid': userCreds.user!.uid,
-      'email': userCreds.user!.email,
-      'name': userCreds.user!.displayName,
-      'photoUrl': userCreds.user!.photoURL,
-    }, SetOptions(merge: true));
-  }
 }
 
-final loginStateNotifierProvider =
-    NotifierProvider<LoginStateNotifier, LoginState>(LoginStateNotifier.new);
+final NotifierProvider<LoginStateNotifier, LoginState>
+loginStateNotifierProvider =
+    NotifierProvider.autoDispose<LoginStateNotifier, LoginState>(
+      LoginStateNotifier.new,
+    );

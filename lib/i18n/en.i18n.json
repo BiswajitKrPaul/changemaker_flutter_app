@@ -1,0 +1,25 @@
+{
+  "login": {
+    "email": "Email",
+    "password": "Password",
+    "login":"Login",
+    "or":"OR",
+    "register":"Register",
+   "dontHaveAccount":"Don't have an account?",
+   "forgotPassword":"Forgot Password?"
+  },
+  "register":{
+    "email": "Email",
+    "name": "Name",
+    "gender": "Gender",
+    "password": "Password",
+    "register":"Register",
+    "confirmPassword":"Confirm Password",
+    "genderTypes":{
+      "male":"Male",
+      "female":"Female",
+      "other":"Other"
+    },
+    "passwordNotMatch":"Password doesn't match with confirm password"
+  }
+}

@@ -13,11 +13,13 @@ class HomePage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Home'),
       ),
-      body: ElevatedButton(
-        onPressed: () {
-          ref.read(authStateNotifierProvider.notifier).signOut();
-        },
-        child: const Text('Logout'),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            ref.read(authStateNotifierProvider.notifier).signOut();
+          },
+          child: const Text('Logout'),
+        ),
       ),
     );
   }
