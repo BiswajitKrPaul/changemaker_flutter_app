@@ -75,7 +75,7 @@ class LoginStateNotifier extends Notifier<LoginState> {
         await ref.read(userStoreProvider).saveUserDetails(userCredential);
       }
       if (ref.mounted) {
-        await ref.read(routeProvider).replaceAll([const HomePageRoute()]);
+        await ref.read(routeProvider).replaceAll([const OnboardingViewRoute()]);
       }
     } on FirebaseAuthException catch (e) {
       AppUtils.showSnackBar(
@@ -106,7 +106,9 @@ class LoginStateNotifier extends Notifier<LoginState> {
           await ref.read(userStoreProvider).saveUserDetails(userCreds);
         }
         if (ref.mounted) {
-          await ref.read(routeProvider).replaceAll([const HomePageRoute()]);
+          await ref.read(routeProvider).replaceAll([
+            const OnboardingViewRoute(),
+          ]);
         }
       }
     } on FirebaseAuthException catch (e) {

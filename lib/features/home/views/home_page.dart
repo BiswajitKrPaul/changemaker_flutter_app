@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:changemaker_flutter_app/features/auth/providers/auth_provider.dart';
+import 'package:changemaker_flutter_app/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -9,18 +9,27 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            ref.read(authStateNotifierProvider.notifier).signOut();
-          },
-          child: const Text('Logout'),
-        ),
-      ),
+    return AutoTabsScaffold(
+      routes: const [
+        DashboardViewRoute(),
+        ProfileViewRoute(),
+      ],
+      bottomNavigationBuilder: (context, tabsRouter) {
+        return NavigationBar(
+          selectedIndex: tabsRouter.activeIndex,
+          onDestinationSelected: tabsRouter.setActiveIndex,
+          destinations: const [
+            NavigationDestination(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.person),
+              label: 'Profile',
+            ),
+          ],
+        );
+      },
     );
   }
 }

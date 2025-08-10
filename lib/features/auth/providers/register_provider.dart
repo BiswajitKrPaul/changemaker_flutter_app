@@ -110,7 +110,7 @@ class RegisterStateNotifier extends Notifier<RegisterState> {
               gender: state.gender?.label,
             );
         state = state.copyWith(isLoading: false);
-        await ref.read(routeProvider).replaceAll([const HomePageRoute()]);
+        await ref.read(routeProvider).replaceAll([const OnboardingViewRoute()]);
       }
     } on FirebaseAuthException catch (e) {
       AppUtils.showSnackBar(e.message ?? 'Could not register');

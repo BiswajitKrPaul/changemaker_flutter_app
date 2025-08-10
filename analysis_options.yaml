@@ -9,6 +9,7 @@ analyzer:
     - custom_lint
   errors:
     invalid_annotation_target: ignore
+    use_setters_to_change_properties: ignore
 
 
 custom_lint:

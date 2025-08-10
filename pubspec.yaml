@@ -29,7 +29,6 @@ dependencies:
   slang_flutter: ^4.8.0
   flutter_localizations:
     sdk: flutter
-  flutter_secure_storage: ^4.2.1
   onboarding: ^4.0.2
 
 

@@ -165,6 +165,7 @@ class LoginPage extends ConsumerWidget {
                   spacing: 32,
                   children: [
                     GoogleAuthButton(
+                      themeMode: ThemeMode.light,
                       onPressed: () {
                         ref
                             .read(loginStateNotifierProvider.notifier)
@@ -175,6 +176,7 @@ class LoginPage extends ConsumerWidget {
                       ),
                     ),
                     FacebookAuthButton(
+                      themeMode: ThemeMode.light,
                       onPressed: () {
                         AppUtils.showSnackBar('Comming soon');
                       },
@@ -186,6 +188,7 @@ class LoginPage extends ConsumerWidget {
                       ),
                     ),
                     AppleAuthButton(
+                      themeMode: ThemeMode.light,
                       onPressed: () {
                         AppUtils.showSnackBar('Comming soon');
                       },
