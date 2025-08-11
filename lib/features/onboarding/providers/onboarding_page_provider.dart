@@ -1,14 +1,15 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class OnboardingNotifier extends Notifier<int> {
+class OnboardingNotifier extends Notifier<double> {
   @override
-  int build() {
+  double build() {
     return 0;
   }
 
-  void setPage(int page) => state = page;
+  void setPage(double page) => state = page;
 }
 
-final onboardingPageProvider = NotifierProvider<OnboardingNotifier, int>(
-  OnboardingNotifier.new,
-);
+final NotifierProvider<OnboardingNotifier, double> onboardingPageProvider =
+    NotifierProvider.autoDispose<OnboardingNotifier, double>(
+      OnboardingNotifier.new,
+    );

@@ -14,8 +14,8 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: LoginPageRoute.page, path: '/login'),
     AutoRoute(
       page: HomePageRoute.page,
-      initial: true,
       path: '/home',
+      initial: true,
       children: [
         AutoRoute(page: DashboardViewRoute.page, path: 'dashboard'),
         AutoRoute(page: ProfileViewRoute.page, path: 'profile'),
@@ -23,6 +23,7 @@ class AppRouter extends RootStackRouter {
     ),
     AutoRoute(page: RegisterPageRoute.page, path: '/register'),
     AutoRoute(page: OnboardingViewRoute.page, path: '/onboarding'),
+    AutoRoute(page: LandingPageRoute.page, path: '/landing'),
   ];
 
   @override
@@ -31,11 +32,13 @@ class AppRouter extends RootStackRouter {
       (resolver, router) {
         final currentUser = ref.read(firebaseAuthProvider).currentUser;
         if (currentUser != null ||
+            resolver.routeName == LandingPageRoute.name ||
             resolver.routeName == LoginPageRoute.name ||
-            resolver.routeName == RegisterPageRoute.name) {
+            resolver.routeName == RegisterPageRoute.name ||
+            resolver.routeName == OnboardingViewRoute.name) {
           resolver.next();
         } else {
-          resolver.redirectUntil(LoginPageRoute());
+          resolver.redirectUntil(const LandingPageRoute());
         }
       },
     ),

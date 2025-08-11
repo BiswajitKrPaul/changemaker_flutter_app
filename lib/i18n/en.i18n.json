@@ -6,7 +6,10 @@
     "or":"OR",
     "register":"Register",
    "dontHaveAccount":"Don't have an account?",
-   "forgotPassword":"Forgot Password?"
+   "forgotPassword":"Forgot Password?",
+   "clickHereToReset":"No problem, just click here to reset it.",
+   "welcomeBack":"Welcome back!",
+   "loginBackMessage":"Log in with your email and password to continue."
   },
   "register":{
     "email": "Email",
@@ -20,6 +23,8 @@
       "female":"Female",
       "other":"Other"
     },
-    "passwordNotMatch":"Password doesn't match with confirm password"
+    "passwordNotMatch":"Password doesn't match with confirm password",
+    "registration":"Registration",
+    "provideInfo":"Please provide the following information for registration."
   }
 }

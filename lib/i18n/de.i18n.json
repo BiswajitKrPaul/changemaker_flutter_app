@@ -6,7 +6,10 @@
     "or":"ODER",
     "register":"Registrieren",
     "dontHaveAccount":"Noch kein Konto?",
-    "forgotPassword":"Passwort vergessen?"
+    "forgotPassword":"Passwort vergessen?",
+    "clickHereToReset":"Kein Problem, klicken Sie einfach hier, um es zurückzusetzen.",
+    "welcomeBack":"Willkommen zurück!",
+    "loginBackMessage":"Melden Sie sich mit Ihrer E-Mail-Adresse und Ihrem Passwort an, um fortzufahren."
   },
   "register":{
     "email": "Email",
@@ -20,6 +23,8 @@
       "female":"Weiblich",
       "other":"Divers"
     },
-    "passwordNotMatch":"Das Passwort stimmt nicht mit dem bestätigten Passwort überein"
+    "passwordNotMatch":"Das Passwort stimmt nicht mit dem bestätigten Passwort überein",
+    "registration":"Registrierung",
+    "provideInfo":"Bitte gebe die folgenden Daten für die Registrierung an."
   }
 }

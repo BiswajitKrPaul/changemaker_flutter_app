@@ -5,6 +5,7 @@ import 'package:changemaker_flutter_app/features/auth/providers/auth_provider.da
 import 'package:changemaker_flutter_app/firebase_options.dart';
 import 'package:changemaker_flutter_app/i18n/strings.g.dart';
 import 'package:changemaker_flutter_app/injection.dart';
+import 'package:changemaker_flutter_app/utils/color_utils.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -50,7 +51,7 @@ class MainApp extends ConsumerWidget {
       authStateNotifierProvider,
       (previous, next) {
         if (next.user == null) {
-          ref.read(routeProvider).replaceAll([LoginPageRoute()]);
+          ref.read(routeProvider).replaceAll([const LandingPageRoute()]);
         }
       },
     );
@@ -62,11 +63,14 @@ class MainApp extends ConsumerWidget {
       supportedLocales: AppLocaleUtils.supportedLocales,
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
       theme: ThemeData.from(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green).copyWith(
-          surface: Colors.white,
-        ),
+        colorScheme:
+            ColorScheme.fromSeed(
+              seedColor: ref.read(colorProvider).gradientStartColor,
+            ).copyWith(
+              surface: Colors.white,
+            ),
         useMaterial3: true,
-        textTheme: GoogleFonts.mulishTextTheme(),
+        textTheme: GoogleFonts.dmSansTextTheme(),
       ),
     );
   }

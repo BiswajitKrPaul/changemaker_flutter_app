@@ -2,6 +2,7 @@ import 'package:changemaker_flutter_app/app_router.dart';
 import 'package:changemaker_flutter_app/app_router.gr.dart';
 import 'package:changemaker_flutter_app/domain/firebase_providers.dart';
 import 'package:changemaker_flutter_app/domain/user_store.dart';
+import 'package:changemaker_flutter_app/i18n/strings.g.dart';
 import 'package:changemaker_flutter_app/utils/app_utils.dart';
 import 'package:changemaker_flutter_app/utils/extension_utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -55,6 +56,41 @@ class RegisterStateNotifier extends Notifier<RegisterState> {
         v3(state.name) != null ||
         v4(state.password) != null ||
         v5(state.confirmPassword) != null;
+  }
+
+  String? isEmailHasError() {
+    final v1 = ValidationBuilder(
+      localeName: LocaleSettings.currentLocale.languageCode,
+    ).email().build();
+    return v1(state.email);
+  }
+
+  String? isPasswordHasError() {
+    final v1 = ValidationBuilder(
+      localeName: LocaleSettings.currentLocale.languageCode,
+    ).minLength(8).build();
+    return v1(state.password);
+  }
+
+  String? isNameHasError() {
+    final v1 = ValidationBuilder(
+      localeName: LocaleSettings.currentLocale.languageCode,
+    ).required().build();
+    return v1(state.name);
+  }
+
+  String? isConfirmPasswordHasError() {
+    final v1 = ValidationBuilder(
+      localeName: LocaleSettings.currentLocale.languageCode,
+    ).minLength(8).confirmPassword(state.password).build();
+    return v1(state.confirmPassword);
+  }
+
+  String? isGenderHasError() {
+    final v1 = ValidationBuilder(
+      localeName: LocaleSettings.currentLocale.languageCode,
+    ).required().build();
+    return v1(state.gender?.name);
   }
 
   void updateName(String name) {

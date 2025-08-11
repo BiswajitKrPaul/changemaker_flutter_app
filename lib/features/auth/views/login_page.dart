@@ -1,13 +1,14 @@
-import 'package:auth_buttons/auth_buttons.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:changemaker_flutter_app/app_router.dart';
-import 'package:changemaker_flutter_app/app_router.gr.dart';
+import 'package:changemaker_flutter_app/common/widgets/background_gradient_widget.dart';
 import 'package:changemaker_flutter_app/features/auth/providers/login_provider.dart';
 import 'package:changemaker_flutter_app/i18n/strings.g.dart';
-import 'package:changemaker_flutter_app/utils/app_utils.dart';
+import 'package:changemaker_flutter_app/utils/color_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_validator/form_validator.dart';
+import 'package:gap/gap.dart';
 
 @RoutePage()
 class LoginPage extends ConsumerWidget {
@@ -33,192 +34,233 @@ class LoginPage extends ConsumerWidget {
       },
     );
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              spacing: 16,
-              children: [
-                Image.asset(
-                  'assets/logo/changemaker_logo.png',
-                  height: 250,
-                ),
-                TextFormField(
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
-                    border: const OutlineInputBorder(),
-                    labelText: t.login.email,
-                  ),
-                  validator: ValidationBuilder(
-                    localeName: LocaleSettings.currentLocale.languageCode,
-                  ).email().build(),
-                  keyboardType: TextInputType.emailAddress,
-                  textInputAction: TextInputAction.next,
-                  onChanged: ref
-                      .read(loginStateNotifierProvider.notifier)
-                      .updateEmail,
-                ),
-                TextFormField(
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  obscureText: !loginWatchProvider.isPasswordVisible,
-                  validator: ValidationBuilder(
-                    localeName: LocaleSettings.currentLocale.languageCode,
-                  ).minLength(6).build(),
-                  textInputAction: TextInputAction.done,
-                  decoration: InputDecoration(
-                    border: const OutlineInputBorder(),
-                    labelText: t.login.password,
-                    suffixIcon: IconButton(
-                      icon: !loginWatchProvider.isPasswordVisible
-                          ? const Icon(Icons.visibility_off)
-                          : const Icon(Icons.remove_red_eye),
-                      onPressed: () {
-                        ref
-                            .read(loginStateNotifierProvider.notifier)
-                            .togglePasswordVisibility();
-                      },
+        child: BackgroundGradientWidget(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 16,
+                children: [
+                  const Gap(50),
+                  InkWell(
+                    onTap: () => ref.read(routeProvider).pop(),
+                    child: const Align(
+                      alignment: Alignment.topLeft,
+                      child: Icon(FontAwesomeIcons.angleLeft),
                     ),
                   ),
-                  keyboardType: TextInputType.text,
-                  onChanged: ref
-                      .read(loginStateNotifierProvider.notifier)
-                      .updatePassword,
-                ),
-                FilledButton(
-                  onPressed:
-                      loginWatchProvider.isLoading ||
-                          loginWatchProvider.isSocialLoginLoading ||
-                          ref
-                              .read(loginStateNotifierProvider.notifier)
-                              .isButtonEnanbled()
-                      ? null
-                      : () {
-                          if (_formKey.currentState?.validate() ?? false) {
+                  const Gap(16),
+                  Text(
+                    t.login.welcomeBack,
+                    style: const TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.start,
+                  ),
+                  Text(
+                    t.login.loginBackMessage,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      color: Colors.black38,
+                    ),
+                    textAlign: TextAlign.start,
+                  ),
+                  const Gap(16),
+                  Stack(
+                    children: [
+                      TextFormField(
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(8),
+                            ),
+                          ),
+                          hintText: t.login.email,
+                        ),
+                        keyboardType: TextInputType.emailAddress,
+                        textInputAction: TextInputAction.next,
+                        validator: ValidationBuilder().email().build(),
+                        onChanged: ref
+                            .read(loginStateNotifierProvider.notifier)
+                            .updateEmail,
+                        errorBuilder: (context, errorText) => const SizedBox(),
+                      ),
+                      Visibility(
+                        visible:
                             ref
-                                .read(loginStateNotifierProvider.notifier)
-                                .signIn();
-                          }
-                        },
-                  style: FilledButton.styleFrom(
-                    fixedSize: const Size(140, 48),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: loginWatchProvider.isLoading
-                      ? const CircularProgressIndicator()
-                      : Text(
-                          t.login.login,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                                    .watch(loginStateNotifierProvider.notifier)
+                                    .isEmailHasError() !=
+                                null ||
+                            (ref
+                                    .watch(loginStateNotifierProvider.notifier)
+                                    .isEmailHasError()
+                                    ?.isNotEmpty ??
+                                false),
+                        child: Align(
+                          alignment: Alignment.topRight,
+                          child: Container(
+                            margin: const EdgeInsets.all(1),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 1,
+                            ),
+                            decoration: BoxDecoration(
+                              color: ref.read(colorProvider).rejectedColor,
+                              borderRadius: const BorderRadius.only(
+                                topRight: Radius.circular(8),
+                                bottomLeft: Radius.circular(8),
+                              ),
+                            ),
+                            child: Text(
+                              ref
+                                      .watch(
+                                        loginStateNotifierProvider.notifier,
+                                      )
+                                      .isEmailHasError() ??
+                                  '',
+                              style: const TextStyle(color: Colors.white),
+                            ),
                           ),
                         ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    ref.read(routeProvider).push(RegisterPageRoute());
-                  },
-                  child: RichText(
-                    text: TextSpan(
-                      style: Theme.of(
-                        context,
-                      ).textTheme.bodyMedium?.copyWith(color: Colors.black),
-                      children: [
-                        TextSpan(text: '${t.login.dontHaveAccount} '),
-                        TextSpan(
-                          text: t.login.register,
-                          style: const TextStyle(
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Expanded(
-                      child: Divider(
-                        thickness: 0.2,
-                      ),
-                    ),
-                    Text(
-                      '   ${t.login.or}   ',
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    const Expanded(
-                      child: Divider(
-                        thickness: 0.2,
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: 32,
-                  children: [
-                    GoogleAuthButton(
-                      themeMode: ThemeMode.light,
-                      onPressed: () {
-                        ref
+                  Stack(
+                    children: [
+                      TextFormField(
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        obscureText: !loginWatchProvider.isPasswordVisible,
+                        validator: ValidationBuilder(
+                          localeName: LocaleSettings.currentLocale.languageCode,
+                        ).minLength(6).build(),
+                        textInputAction: TextInputAction.done,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(8),
+                            ),
+                          ),
+                          hintText: t.login.password,
+
+                          // suffixIcon: IconButton(
+                          //   icon: !loginWatchProvider.isPasswordVisible
+                          //       ? const Icon(Icons.visibility_off)
+                          //       : const Icon(Icons.remove_red_eye),
+                          //   onPressed: () {
+                          //     ref
+                          //         .read(loginStateNotifierProvider.notifier)
+                          //         .togglePasswordVisibility();
+                          //   },
+                          // ),
+                        ),
+                        keyboardType: TextInputType.text,
+                        errorBuilder: (context, errorText) => const SizedBox(),
+                        onChanged: ref
                             .read(loginStateNotifierProvider.notifier)
-                            .signInUsingGoogle();
-                      },
-                      style: const AuthButtonStyle(
-                        buttonType: AuthButtonType.icon,
+                            .updatePassword,
                       ),
-                    ),
-                    FacebookAuthButton(
-                      themeMode: ThemeMode.light,
-                      onPressed: () {
-                        AppUtils.showSnackBar('Comming soon');
-                      },
-                      materialStyle: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
+                      Visibility(
+                        visible:
+                            ref
+                                    .watch(loginStateNotifierProvider.notifier)
+                                    .isPasswordHasError() !=
+                                null ||
+                            (ref
+                                    .watch(loginStateNotifierProvider.notifier)
+                                    .isPasswordHasError()
+                                    ?.isNotEmpty ??
+                                false),
+                        child: Align(
+                          alignment: Alignment.topRight,
+                          child: Container(
+                            margin: const EdgeInsets.all(1),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 1,
+                            ),
+                            decoration: BoxDecoration(
+                              color: ref.read(colorProvider).rejectedColor,
+                              borderRadius: const BorderRadius.only(
+                                topRight: Radius.circular(8),
+                                bottomLeft: Radius.circular(8),
+                              ),
+                            ),
+                            child: Text(
+                              ref
+                                      .watch(
+                                        loginStateNotifierProvider.notifier,
+                                      )
+                                      .isPasswordHasError() ??
+                                  '',
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
                       ),
-                      style: const AuthButtonStyle(
-                        buttonType: AuthButtonType.icon,
+                    ],
+                  ),
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: TextButton(
+                      onPressed: () {},
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.black,
                       ),
+                      child: Text(t.login.forgotPassword),
                     ),
-                    AppleAuthButton(
-                      themeMode: ThemeMode.light,
-                      onPressed: () {
-                        AppUtils.showSnackBar('Comming soon');
-                      },
-                      style: const AuthButtonStyle(
-                        buttonType: AuthButtonType.icon,
+                  ),
+                  const Spacer(),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 60,
+                    child: FilledButton(
+                      onPressed:
+                          loginWatchProvider.isLoading ||
+                              loginWatchProvider.isSocialLoginLoading ||
+                              ref
+                                  .read(loginStateNotifierProvider.notifier)
+                                  .isButtonEnanbled()
+                          ? null
+                          : () {
+                              if (_formKey.currentState?.validate() ?? false) {
+                                ref
+                                    .read(loginStateNotifierProvider.notifier)
+                                    .signIn();
+                              }
+                            },
+                      style: FilledButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40),
+                        ),
+                        foregroundColor: Colors.white,
+                        backgroundColor: ref
+                            .read(colorProvider)
+                            .filledButtonColor,
                       ),
+                      child: loginWatchProvider.isLoading
+                          ? const CircularProgressIndicator()
+                          : Text(
+                              t.login.login,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
                     ),
-                  ],
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(t.login.forgotPassword),
-                ),
-                DropdownButton(
-                  value: LocaleSettings.currentLocale.languageCode,
-                  items: const [
-                    DropdownMenuItem(
-                      value: 'en',
-                      child: Text('English'),
-                    ),
-                    DropdownMenuItem(
-                      value: 'de',
-                      child: Text('Deutsch'),
-                    ),
-                  ],
-                  onChanged: (value) {
-                    LocaleSettings.setLocaleRaw(value!);
-                  },
-                ),
-              ],
+                  ),
+                  const Gap(50),
+                ],
+              ),
             ),
           ),
         ),

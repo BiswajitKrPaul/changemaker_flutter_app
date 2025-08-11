@@ -1,7 +1,7 @@
 name: changemaker_flutter_app
 description: "A new Flutter project."
 publish_to: 'none'
-version: 0.1.0
+version: 0.1.1
 
 environment:
   sdk: ^3.8.1
@@ -18,7 +18,7 @@ dependencies:
   google_fonts: ^6.3.0
   freezed_annotation: ^3.1.0
   json_annotation: ^4.9.0
-  font_awesome_flutter: ^10.8.0
+  font_awesome_flutter: ^10.9.0
   gap: ^3.0.1
   auth_buttons: ^3.0.3
   snacknload: ^1.0.9
@@ -29,7 +29,8 @@ dependencies:
   slang_flutter: ^4.8.0
   flutter_localizations:
     sdk: flutter
-  onboarding: ^4.0.2
+  flutter_svg: ^2.2.0
+  dots_indicator: ^4.0.1
 
 
 dev_dependencies:
@@ -50,3 +51,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/logo/
+    - assets/image/

@@ -3,6 +3,7 @@ import 'package:changemaker_flutter_app/app_router.gr.dart';
 import 'package:changemaker_flutter_app/domain/firebase_providers.dart';
 import 'package:changemaker_flutter_app/domain/user_store.dart';
 import 'package:changemaker_flutter_app/features/auth/providers/auth_provider.dart';
+import 'package:changemaker_flutter_app/i18n/strings.g.dart';
 import 'package:changemaker_flutter_app/utils/app_utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,8 +32,22 @@ class LoginStateNotifier extends Notifier<LoginState> {
 
   bool isButtonEnanbled() {
     final v1 = ValidationBuilder().email().build();
-    final v2 = ValidationBuilder().minLength(6).build();
+    final v2 = ValidationBuilder().minLength(8).build();
     return v1(state.email) != null || v2(state.password) != null;
+  }
+
+  String? isEmailHasError() {
+    final v1 = ValidationBuilder(
+      localeName: LocaleSettings.currentLocale.languageCode,
+    ).email().build();
+    return v1(state.email);
+  }
+
+  String? isPasswordHasError() {
+    final v1 = ValidationBuilder(
+      localeName: LocaleSettings.currentLocale.languageCode,
+    ).minLength(8).build();
+    return v1(state.password);
   }
 
   void updateEmail(String email) {
@@ -84,7 +99,7 @@ class LoginStateNotifier extends Notifier<LoginState> {
     } on GoogleSignInException catch (e) {
       AppUtils.showSnackBar(e.description.toString());
     } finally {
-      state = state.copyWith(isSocialLoginLoading: false);
+      if (ref.mounted) state = state.copyWith(isSocialLoginLoading: false);
     }
   }
 
