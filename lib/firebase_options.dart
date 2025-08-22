@@ -56,13 +56,13 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDhymsYUMJTS-P51adj_0QS_5Fg-gDiazw',
-    appId: '1:802072297266:ios:d0199c2ae18b396468e12b',
+    appId: '1:802072297266:ios:0781d3fd3c578e8c68e12b',
     messagingSenderId: '802072297266',
     projectId: 'changemaker-22f3c',
     storageBucket: 'changemaker-22f3c.firebasestorage.app',
     androidClientId: '802072297266-ebieotkuiqboitu3t9lbg6omt11gaelh.apps.googleusercontent.com',
-    iosClientId: '802072297266-81ppprf27tnjm5pqno0914mumbl8l6mj.apps.googleusercontent.com',
-    iosBundleId: 'com.example.changemakerFlutterApp',
+    iosClientId: '802072297266-b2km9ukh9jtlnqid8hgqtcff7fpqau29.apps.googleusercontent.com',
+    iosBundleId: 'com.strativari.changemaker',
   );
 
   static const FirebaseOptions web = FirebaseOptions(

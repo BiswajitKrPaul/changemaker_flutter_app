@@ -51,7 +51,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>GIDClientID</key>
-	<string>802072297266-81ppprf27tnjm5pqno0914mumbl8l6mj.apps.googleusercontent.com</string>
+	<string>802072297266-b2km9ukh9jtlnqid8hgqtcff7fpqau29.apps.googleusercontent.com</string>
 	<!-- Put me in the [my_project]/ios/Runner/Info.plist file -->
 <!-- Google Sign-in Section -->
 	<key>CFBundleURLTypes</key>
@@ -62,7 +62,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 			<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
-				<string>com.googleusercontent.apps.802072297266-81ppprf27tnjm5pqno0914mumbl8l6mj</string>
+				<string>com.googleusercontent.apps.802072297266-b2km9ukh9jtlnqid8hgqtcff7fpqau29</string>
 			</array>
 		</dict>
 	</array>

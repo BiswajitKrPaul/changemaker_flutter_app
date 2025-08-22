@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>802072297266-81ppprf27tnjm5pqno0914mumbl8l6mj.apps.googleusercontent.com</string>
+	<string>802072297266-b2km9ukh9jtlnqid8hgqtcff7fpqau29.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.802072297266-81ppprf27tnjm5pqno0914mumbl8l6mj</string>
+	<string>com.googleusercontent.apps.802072297266-b2km9ukh9jtlnqid8hgqtcff7fpqau29</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>802072297266-ebieotkuiqboitu3t9lbg6omt11gaelh.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.changemakerFlutterApp</string>
+	<string>com.strativari.changemaker</string>
 	<key>PROJECT_ID</key>
 	<string>changemaker-22f3c</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:802072297266:ios:d0199c2ae18b396468e12b</string>
+	<string>1:802072297266:ios:0781d3fd3c578e8c68e12b</string>
 </dict>
 </plist>
