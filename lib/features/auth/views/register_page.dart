@@ -67,11 +67,12 @@ class RegisterPage extends ConsumerWidget {
       body: SingleChildScrollView(
         child: BackgroundGradientWidget(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.all(16),
             child: Form(
               key: _formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 spacing: 32,
                 children: [
                   const Gap(50),
@@ -256,7 +257,6 @@ class RegisterPage extends ConsumerWidget {
                             ),
                     ),
                   ),
-                  const Spacer(),
                 ],
               ),
             ),

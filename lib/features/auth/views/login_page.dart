@@ -42,6 +42,7 @@ class LoginPage extends ConsumerWidget {
               key: _formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 spacing: 16,
                 children: [
                   const Gap(50),
@@ -258,7 +259,6 @@ class LoginPage extends ConsumerWidget {
                             ),
                     ),
                   ),
-                  const Gap(50),
                 ],
               ),
             ),

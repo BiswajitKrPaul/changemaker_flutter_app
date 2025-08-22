@@ -48,6 +48,7 @@ class _LandingPageState extends ConsumerState<LandingPage> {
               image: AssetImage(
                 ref.read(assetsProvider).landingPageBackground,
               ),
+              fit: BoxFit.fill,
             ),
           ),
           child: Column(
@@ -100,51 +101,54 @@ class _LandingPageState extends ConsumerState<LandingPage> {
                 ),
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 spacing: 32,
                 children: [
-                  SizedBox(
-                    width: 98,
-                    height: 48,
-                    child: FilledButton(
-                      onPressed: () {
-                        ref
-                            .read(loginStateNotifierProvider.notifier)
-                            .signInUsingGoogle();
-                      },
-                      style: FilledButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
+                  Expanded(
+                    child: SizedBox(
+                      height: 48,
+                      child: FilledButton(
+                        onPressed: () {
+                          ref
+                              .read(loginStateNotifierProvider.notifier)
+                              .signInUsingGoogle();
+                        },
+                        style: FilledButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.black,
+                        ),
+                        child: const Icon(FontAwesomeIcons.google),
                       ),
-                      child: const Icon(FontAwesomeIcons.google),
                     ),
                   ),
-                  SizedBox(
-                    width: 98,
-                    height: 48,
-                    child: FilledButton(
-                      onPressed: () {
-                        AppUtils.showSnackBar('Comming soon');
-                      },
-                      style: FilledButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
+                  Expanded(
+                    child: SizedBox(
+                      height: 48,
+                      child: FilledButton(
+                        onPressed: () {
+                          AppUtils.showSnackBar('Comming soon');
+                        },
+                        style: FilledButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.black,
+                        ),
+                        child: const Icon(FontAwesomeIcons.facebook),
                       ),
-                      child: const Icon(FontAwesomeIcons.facebook),
                     ),
                   ),
-                  SizedBox(
-                    width: 98,
-                    height: 48,
-                    child: FilledButton(
-                      onPressed: () {
-                        AppUtils.showSnackBar('Comming soon');
-                      },
-                      style: FilledButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
+                  Expanded(
+                    child: SizedBox(
+                      height: 48,
+                      child: FilledButton(
+                        onPressed: () {
+                          AppUtils.showSnackBar('Comming soon');
+                        },
+                        style: FilledButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.black,
+                        ),
+                        child: const Icon(FontAwesomeIcons.apple),
                       ),
-                      child: const Icon(FontAwesomeIcons.apple),
                     ),
                   ),
                 ],
