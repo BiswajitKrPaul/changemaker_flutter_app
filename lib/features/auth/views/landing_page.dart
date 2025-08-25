@@ -55,7 +55,7 @@ class _LandingPageState extends ConsumerState<LandingPage> {
             mainAxisAlignment: MainAxisAlignment.end,
             spacing: 16,
             children: [
-              const Flexible(
+              const FittedBox(
                 child: Text(
                   'Changemaker',
                   style: TextStyle(
@@ -66,7 +66,7 @@ class _LandingPageState extends ConsumerState<LandingPage> {
                   textAlign: TextAlign.center,
                 ),
               ),
-              const Flexible(
+              const FittedBox(
                 child: Text(
                   'HIP 3d',
                   style: TextStyle(
