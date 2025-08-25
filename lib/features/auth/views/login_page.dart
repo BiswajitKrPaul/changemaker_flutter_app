@@ -41,7 +41,6 @@ class LoginPage extends ConsumerWidget {
             child: Form(
               key: _formKey,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 spacing: 16,
                 children: [
@@ -114,7 +113,7 @@ class LoginPage extends ConsumerWidget {
                               vertical: 1,
                             ),
                             decoration: BoxDecoration(
-                              color: ref.read(colorProvider).rejectedColor,
+                              color: ref.read(colorProvider).gradientStartColor,
                               borderRadius: const BorderRadius.only(
                                 topRight: Radius.circular(8),
                                 bottomLeft: Radius.circular(8),
@@ -190,7 +189,7 @@ class LoginPage extends ConsumerWidget {
                               vertical: 1,
                             ),
                             decoration: BoxDecoration(
-                              color: ref.read(colorProvider).rejectedColor,
+                              color: ref.read(colorProvider).gradientStartColor,
                               borderRadius: const BorderRadius.only(
                                 topRight: Radius.circular(8),
                                 bottomLeft: Radius.circular(8),

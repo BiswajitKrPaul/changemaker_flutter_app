@@ -65,9 +65,10 @@ class MainApp extends ConsumerWidget {
       theme: ThemeData.from(
         colorScheme:
             ColorScheme.fromSeed(
-              seedColor: ref.read(colorProvider).gradientStartColor,
+              seedColor: ref.read(colorProvider).gradientMiddleColor,
             ).copyWith(
               surface: Colors.white,
+              error: ref.read(colorProvider).gradientStartColor,
             ),
         useMaterial3: true,
         textTheme: GoogleFonts.dmSansTextTheme(),

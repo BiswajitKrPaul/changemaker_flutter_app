@@ -31,7 +31,7 @@ class RegisterPage extends ConsumerWidget {
     );
   }
 
-  Widget _getErrorString(String? validation) {
+  Widget _getErrorWidget(String? validation, WidgetRef ref) {
     return Visibility(
       visible: validation != null || (validation?.isNotEmpty ?? false),
       child: Align(
@@ -42,9 +42,9 @@ class RegisterPage extends ConsumerWidget {
             horizontal: 8,
             vertical: 1,
           ),
-          decoration: const BoxDecoration(
-            color: Color(0xffF55053),
-            borderRadius: BorderRadius.only(
+          decoration: BoxDecoration(
+            color: ref.read(colorProvider).gradientStartColor,
+            borderRadius: const BorderRadius.only(
               topRight: Radius.circular(8),
               bottomLeft: Radius.circular(8),
             ),
@@ -71,7 +71,6 @@ class RegisterPage extends ConsumerWidget {
             child: Form(
               key: _formKey,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 spacing: 32,
                 children: [
@@ -112,9 +111,7 @@ class RegisterPage extends ConsumerWidget {
                         ).email().build(),
                         errorBuilder: (context, errorText) => const SizedBox(),
                       ),
-                      _getErrorString(
-                        registerNotifier.isEmailHasError(),
-                      ),
+                      _getErrorWidget(registerNotifier.isEmailHasError(), ref),
                     ],
                   ),
                   Stack(
@@ -128,9 +125,7 @@ class RegisterPage extends ConsumerWidget {
                         ).minLength(5).build(),
                         errorBuilder: (context, errorText) => const SizedBox(),
                       ),
-                      _getErrorString(
-                        registerNotifier.isNameHasError(),
-                      ),
+                      _getErrorWidget(registerNotifier.isNameHasError(), ref),
                     ],
                   ),
                   Stack(
@@ -162,9 +157,7 @@ class RegisterPage extends ConsumerWidget {
                           }
                         },
                       ),
-                      _getErrorString(
-                        registerNotifier.isGenderHasError(),
-                      ),
+                      _getErrorWidget(registerNotifier.isGenderHasError(), ref),
                     ],
                   ),
                   Stack(
@@ -188,7 +181,10 @@ class RegisterPage extends ConsumerWidget {
                         onChanged: registerNotifier.updatePassword,
                         errorBuilder: (context, errorText) => const SizedBox(),
                       ),
-                      _getErrorString(registerNotifier.isPasswordHasError()),
+                      _getErrorWidget(
+                        registerNotifier.isPasswordHasError(),
+                        ref,
+                      ),
                     ],
                   ),
                   Stack(
@@ -217,8 +213,9 @@ class RegisterPage extends ConsumerWidget {
                         onChanged: registerNotifier.updateConfirmPassword,
                         errorBuilder: (context, errorText) => const SizedBox(),
                       ),
-                      _getErrorString(
+                      _getErrorWidget(
                         registerNotifier.isConfirmPasswordHasError(),
+                        ref,
                       ),
                     ],
                   ),

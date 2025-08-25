@@ -55,14 +55,27 @@ class _LandingPageState extends ConsumerState<LandingPage> {
             mainAxisAlignment: MainAxisAlignment.end,
             spacing: 16,
             children: [
-              const Text(
-                'Changemaker HIP 3d',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 50,
-                  fontWeight: FontWeight.bold,
+              const Flexible(
+                child: Text(
+                  'Changemaker',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
+              ),
+              const Flexible(
+                child: Text(
+                  'HIP 3d',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
               const Gap(50),
               SizedBox(
