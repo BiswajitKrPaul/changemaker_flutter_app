@@ -26,5 +26,25 @@
     "passwordNotMatch":"Password doesn't match with confirm password",
     "registration":"Registration",
     "provideInfo":"Please provide the following information for registration."
+  },
+  "resetpassword":{
+    "resetPassword":"Reset Password",
+    "provideInfo":"Please enter your email address to reset your password.",
+    "send":"Password reset link has been sent to you email."
+  },
+  "onboarding":{
+   "title":{
+      "t1":"Start your change now",
+      "t2":"Scientifically based",
+      "t3":"Become part of HIP 3D®",
+      "t4":"What is HIP 3D®?"
+    },
+    "desc":{
+      "d1":"Reinventing thinking, feeling and acting",
+      "d2":"Neuroscience Hypnosis & Bodywork combined",
+      "d3":"Inspiration & Support In the Community",
+      "d4":"Hypno-Imaginative Programming A proven method that sustainably connects body, mind & emotions"
+    },
+     "d5":"Become your own changemaker!"
   }
 }

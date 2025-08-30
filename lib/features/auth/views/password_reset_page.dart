@@ -1,8 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:changemaker_flutter_app/app_router.dart';
-import 'package:changemaker_flutter_app/app_router.gr.dart';
 import 'package:changemaker_flutter_app/common/widgets/background_gradient_widget.dart';
-import 'package:changemaker_flutter_app/features/auth/providers/login_provider.dart';
+import 'package:changemaker_flutter_app/features/auth/providers/reset_password_providers.dart';
 import 'package:changemaker_flutter_app/i18n/strings.g.dart';
 import 'package:changemaker_flutter_app/utils/color_utils.dart';
 import 'package:flutter/material.dart';
@@ -11,29 +10,15 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:gap/gap.dart';
 
-@RoutePage()
-class LoginPage extends ConsumerWidget {
-  LoginPage({super.key});
+final _formKey = GlobalKey<FormState>();
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+@RoutePage()
+class PasswordResetPage extends ConsumerWidget {
+  const PasswordResetPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final loginWatchProvider = ref.watch(loginStateNotifierProvider);
-    ref.listen(
-      loginStateNotifierProvider,
-      (previous, next) {
-        if (next.isSocialLoginLoading) {
-          showDialog<void>(
-            context: context,
-            barrierDismissible: false,
-            builder: (context) => const Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        }
-      },
-    );
+    final state = ref.watch(resetPasswordProvider);
     return Scaffold(
       body: SingleChildScrollView(
         child: BackgroundGradientWidget(
@@ -55,7 +40,7 @@ class LoginPage extends ConsumerWidget {
                   ),
                   const Gap(16),
                   Text(
-                    t.login.welcomeBack,
+                    t.resetpassword.resetPassword,
                     style: const TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
@@ -64,7 +49,7 @@ class LoginPage extends ConsumerWidget {
                     textAlign: TextAlign.center,
                   ),
                   Text(
-                    t.login.loginBackMessage,
+                    t.resetpassword.provideInfo,
                     style: const TextStyle(
                       fontSize: 16,
                       color: Colors.black38,
@@ -90,18 +75,18 @@ class LoginPage extends ConsumerWidget {
                         textInputAction: TextInputAction.next,
                         validator: ValidationBuilder().email().build(),
                         onChanged: ref
-                            .read(loginStateNotifierProvider.notifier)
+                            .read(resetPasswordProvider.notifier)
                             .updateEmail,
                         errorBuilder: (context, errorText) => const SizedBox(),
                       ),
                       Visibility(
                         visible:
                             ref
-                                    .watch(loginStateNotifierProvider.notifier)
+                                    .watch(resetPasswordProvider.notifier)
                                     .isEmailHasError() !=
                                 null ||
                             (ref
-                                    .watch(loginStateNotifierProvider.notifier)
+                                    .watch(resetPasswordProvider.notifier)
                                     .isEmailHasError()
                                     ?.isNotEmpty ??
                                 false),
@@ -123,7 +108,7 @@ class LoginPage extends ConsumerWidget {
                             child: Text(
                               ref
                                       .watch(
-                                        loginStateNotifierProvider.notifier,
+                                        resetPasswordProvider.notifier,
                                       )
                                       .isEmailHasError() ??
                                   '',
@@ -134,115 +119,22 @@ class LoginPage extends ConsumerWidget {
                       ),
                     ],
                   ),
-                  Stack(
-                    children: [
-                      TextFormField(
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        obscureText: !loginWatchProvider.isPasswordVisible,
-                        validator: ValidationBuilder(
-                          localeName: LocaleSettings.currentLocale.languageCode,
-                        ).minLength(6).build(),
-                        textInputAction: TextInputAction.done,
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          border: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8),
-                            ),
-                          ),
-                          hintText: t.login.password,
-
-                          // suffixIcon: IconButton(
-                          //   icon: !loginWatchProvider.isPasswordVisible
-                          //       ? const Icon(Icons.visibility_off)
-                          //       : const Icon(Icons.remove_red_eye),
-                          //   onPressed: () {
-                          //     ref
-                          //         .read(loginStateNotifierProvider.notifier)
-                          //         .togglePasswordVisibility();
-                          //   },
-                          // ),
-                        ),
-                        keyboardType: TextInputType.text,
-                        errorBuilder: (context, errorText) => const SizedBox(),
-                        onChanged: ref
-                            .read(loginStateNotifierProvider.notifier)
-                            .updatePassword,
-                      ),
-                      Visibility(
-                        visible:
-                            ref
-                                    .watch(loginStateNotifierProvider.notifier)
-                                    .isPasswordHasError() !=
-                                null ||
-                            (ref
-                                    .watch(loginStateNotifierProvider.notifier)
-                                    .isPasswordHasError()
-                                    ?.isNotEmpty ??
-                                false),
-                        child: Align(
-                          alignment: Alignment.topRight,
-                          child: Container(
-                            margin: const EdgeInsets.all(1),
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8,
-                              vertical: 1,
-                            ),
-                            decoration: BoxDecoration(
-                              color: ref.read(colorProvider).gradientStartColor,
-                              borderRadius: const BorderRadius.only(
-                                topRight: Radius.circular(8),
-                                bottomLeft: Radius.circular(8),
-                              ),
-                            ),
-                            child: Text(
-                              ref
-                                      .watch(
-                                        loginStateNotifierProvider.notifier,
-                                      )
-                                      .isPasswordHasError() ??
-                                  '',
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: TextButton(
-                      onPressed: () {
-                        ref
-                            .read(routeProvider)
-                            .replace(
-                              const PasswordResetPageRoute(),
-                            );
-                      },
-                      style: TextButton.styleFrom(
-                        foregroundColor: Colors.black,
-                      ),
-                      child: Text(t.login.forgotPassword),
-                    ),
-                  ),
                   const Spacer(),
                   SizedBox(
                     width: double.infinity,
                     height: 60,
                     child: FilledButton(
                       onPressed:
-                          loginWatchProvider.isLoading ||
-                              loginWatchProvider.isSocialLoginLoading ||
+                          state.isLoading ||
                               ref
-                                  .read(loginStateNotifierProvider.notifier)
+                                  .read(resetPasswordProvider.notifier)
                                   .isButtonEnanbled()
                           ? null
                           : () {
                               if (_formKey.currentState?.validate() ?? false) {
                                 ref
-                                    .read(loginStateNotifierProvider.notifier)
-                                    .signIn();
+                                    .read(resetPasswordProvider.notifier)
+                                    .resetPassword();
                               }
                             },
                       style: FilledButton.styleFrom(
@@ -254,10 +146,10 @@ class LoginPage extends ConsumerWidget {
                             .read(colorProvider)
                             .filledButtonColor,
                       ),
-                      child: loginWatchProvider.isLoading
+                      child: state.isLoading
                           ? const CircularProgressIndicator()
                           : Text(
-                              t.login.login,
+                              t.resetpassword.resetPassword,
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,

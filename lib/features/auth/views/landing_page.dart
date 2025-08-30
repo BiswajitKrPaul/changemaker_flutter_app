@@ -154,7 +154,9 @@ class _LandingPageState extends ConsumerState<LandingPage> {
                       height: 48,
                       child: FilledButton(
                         onPressed: () {
-                          AppUtils.showSnackBar('Comming soon');
+                          ref
+                              .read(loginStateNotifierProvider.notifier)
+                              .signInUsingApple();
                         },
                         style: FilledButton.styleFrom(
                           backgroundColor: Colors.white,
@@ -167,7 +169,11 @@ class _LandingPageState extends ConsumerState<LandingPage> {
                 ],
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  ref
+                      .read(routeProvider)
+                      .navigate(const PasswordResetPageRoute());
+                },
                 child: RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(

@@ -1,7 +1,7 @@
 name: changemaker_flutter_app
 description: "A new Flutter project."
 publish_to: 'none'
-version: 0.1.1+5
+version: 0.1.1+6
 
 environment:
   sdk: ^3.8.1
@@ -30,6 +30,8 @@ dependencies:
     sdk: flutter
   flutter_svg: ^2.2.0
   dots_indicator: ^4.0.1
+  sign_in_with_apple: ^7.0.1
+  flutter_facebook_auth: ^6.0.4
 
 
 dev_dependencies:

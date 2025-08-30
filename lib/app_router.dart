@@ -24,6 +24,7 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: RegisterPageRoute.page, path: '/register'),
     AutoRoute(page: OnboardingViewRoute.page, path: '/onboarding'),
     AutoRoute(page: LandingPageRoute.page, path: '/landing'),
+    AutoRoute(page: PasswordResetPageRoute.page, path: '/password-reset'),
   ];
 
   @override
@@ -35,7 +36,7 @@ class AppRouter extends RootStackRouter {
             resolver.routeName == LandingPageRoute.name ||
             resolver.routeName == LoginPageRoute.name ||
             resolver.routeName == RegisterPageRoute.name ||
-            resolver.routeName == OnboardingViewRoute.name) {
+            resolver.routeName == PasswordResetPageRoute.name) {
           resolver.next();
         } else {
           resolver.redirectUntil(const LandingPageRoute());

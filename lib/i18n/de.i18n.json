@@ -7,7 +7,7 @@
     "register":"Registrieren",
     "dontHaveAccount":"Noch kein Konto?",
     "forgotPassword":"Passwort vergessen?",
-    "clickHereToReset":"Kein Problem, klicken Sie einfach hier, um es zurückzusetzen.",
+    "clickHereToReset":"Hier zurücksetzen.",
     "welcomeBack":"Willkommen zurück!",
     "loginBackMessage":"Melden Sie sich mit Ihrer E-Mail-Adresse und Ihrem Passwort an, um fortzufahren."
   },
@@ -26,5 +26,25 @@
     "passwordNotMatch":"Das Passwort stimmt nicht mit dem bestätigten Passwort überein",
     "registration":"Registrierung",
     "provideInfo":"Bitte gebe die folgenden Daten für die Registrierung an."
+  },
+  "resetpassword":{
+    "resetPassword":"Passwort zurücksetzen",
+    "provideInfo":"Bitte gebe deine Email-Adresse ein, um dein Passwort zurücksetzen zu können.",
+    "send":"Der Link zum Zurücksetzen des Passworts wurde an Ihre E-Mail-Adresse gesendet."
+  },
+  "onboarding":{
+    "title":{
+      "t1":"Starte jetzt deine Veränderung",
+      "t2":"Wissenschaftlich fundiert",
+      "t3":"Werde Teil der HIP 3D®",
+      "t4":"Was ist HIP 3D®?"
+    },
+    "desc":{
+      "d1":"Denken Fühlen & Handeln neu erfinden",
+      "d2":"Neurowissenschaft Hypnose & Körperarbeit vereint",
+      "d3":"Inspiration & Unterstützung In der Community",
+      "d4":"Hypno-Imaginatives Programmieren Eine praxiserprobte Methode, die Körper, Geist & Gefühl nachhaltig verbindet"
+    },
+    "d5":"Werde dein eigener Changemaker!"
   }
 }

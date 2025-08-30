@@ -6,6 +6,7 @@ import 'package:changemaker_flutter_app/features/auth/providers/auth_provider.da
 import 'package:changemaker_flutter_app/i18n/strings.g.dart';
 import 'package:changemaker_flutter_app/utils/app_utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -98,6 +99,75 @@ class LoginStateNotifier extends Notifier<LoginState> {
       );
     } on GoogleSignInException catch (e) {
       AppUtils.showSnackBar(e.description.toString());
+    } finally {
+      if (ref.mounted) state = state.copyWith(isSocialLoginLoading: false);
+    }
+  }
+
+  Future<void> signInUsingFacebook() async {
+    try {
+      final loginResult = await FacebookAuth.instance.login();
+
+      final facebookAuthCredential = FacebookAuthProvider.credential(
+        loginResult.accessToken!.token,
+      );
+
+      // Create a new credential
+      state = state.copyWith(isSocialLoginLoading: true);
+
+      final userCredential = await ref
+          .read(firebaseAuthProvider)
+          .signInWithCredential(facebookAuthCredential);
+      ref
+          .read(authStateNotifierProvider.notifier)
+          .updateUser(userCredential.user);
+      final data = await ref
+          .read(userCollectionProvider)
+          .where('uid', isEqualTo: userCredential.user!.uid)
+          .get();
+      if (data.size == 0) {
+        await ref.read(userStoreProvider).saveUserDetails(userCredential);
+      }
+      if (ref.mounted) {
+        await ref.read(routeProvider).replaceAll([const OnboardingViewRoute()]);
+      }
+    } on FirebaseAuthException catch (e) {
+      AppUtils.showSnackBar(
+        e.message ?? 'Invalid Login',
+      );
+    } on GoogleSignInException catch (e) {
+      AppUtils.showSnackBar(e.description.toString());
+    } finally {
+      if (ref.mounted) state = state.copyWith(isSocialLoginLoading: false);
+    }
+  }
+
+  Future<void> signInUsingApple() async {
+    try {
+      final appleProvider = AppleAuthProvider()
+        ..addScope('email')
+        ..addScope('name');
+      final userCredential = await ref
+          .read(firebaseAuthProvider)
+          .signInWithProvider(appleProvider);
+      state = state.copyWith(isSocialLoginLoading: true);
+      ref
+          .read(authStateNotifierProvider.notifier)
+          .updateUser(userCredential.user);
+      final data = await ref
+          .read(userCollectionProvider)
+          .where('uid', isEqualTo: userCredential.user!.uid)
+          .get();
+      if (data.size == 0) {
+        await ref.read(userStoreProvider).saveUserDetails(userCredential);
+      }
+      if (ref.mounted) {
+        await ref.read(routeProvider).replaceAll([const OnboardingViewRoute()]);
+      }
+    } on FirebaseAuthException catch (e) {
+      AppUtils.showSnackBar(
+        e.message ?? 'Invalid Login',
+      );
     } finally {
       if (ref.mounted) state = state.copyWith(isSocialLoginLoading: false);
     }

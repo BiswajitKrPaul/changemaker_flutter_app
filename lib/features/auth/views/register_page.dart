@@ -74,7 +74,7 @@ class RegisterPage extends ConsumerWidget {
                 mainAxisSize: MainAxisSize.min,
                 spacing: 32,
                 children: [
-                  const Gap(50),
+                  const Gap(kToolbarHeight),
                   InkWell(
                     onTap: () => ref.read(routeProvider).pop(),
                     child: const Align(
@@ -90,7 +90,7 @@ class RegisterPage extends ConsumerWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
-                    textAlign: TextAlign.start,
+                    textAlign: TextAlign.center,
                   ),
                   Text(
                     t.register.provideInfo,
@@ -98,7 +98,7 @@ class RegisterPage extends ConsumerWidget {
                       fontSize: 16,
                       color: Colors.black38,
                     ),
-                    textAlign: TextAlign.start,
+                    textAlign: TextAlign.center,
                   ),
                   Stack(
                     children: [
