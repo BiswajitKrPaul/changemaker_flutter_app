@@ -2,14 +2,15 @@
   "login": {
     "email": "Email",
     "password": "Passwort",
-    "login":"Login",
+    "login":"Anmelden",
     "or":"ODER",
     "register":"Registrieren",
     "dontHaveAccount":"Noch kein Konto?",
     "forgotPassword":"Passwort vergessen?",
     "clickHereToReset":"Hier zurücksetzen.",
     "welcomeBack":"Willkommen zurück!",
-    "loginBackMessage":"Melden Sie sich mit Ihrer E-Mail-Adresse und Ihrem Passwort an, um fortzufahren."
+    "loginBackMessage":"Melden Sie sich mit Ihrer E-Mail-Adresse und Ihrem Passwort an, um fortzufahren.",
+    "reprogramYourSub":"Programmiere Dein Unterbewusstsein neu"
   },
   "register":{
     "email": "Email",
@@ -34,17 +35,22 @@
   },
   "onboarding":{
     "title":{
-      "t1":"Starte jetzt deine Veränderung",
-      "t2":"Wissenschaftlich fundiert",
-      "t3":"Werde Teil der HIP 3D®",
-      "t4":"Was ist HIP 3D®?"
+      "t1":"Starte jetzt \ndeine \n Veränderung",
+      "t2":"Wissenschaftlich \nfundiert",
+      "t3":"Werde Teil der\nHIP 3D®\nCommunity",
+      "t4":"Was ist\n HIP 3D®"
     },
     "desc":{
-      "d1":"Denken Fühlen & Handeln neu erfinden",
-      "d2":"Neurowissenschaft Hypnose & Körperarbeit vereint",
-      "d3":"Inspiration & Unterstützung In der Community",
-      "d4":"Hypno-Imaginatives Programmieren Eine praxiserprobte Methode, die Körper, Geist & Gefühl nachhaltig verbindet"
-    },
-    "d5":"Werde dein eigener Changemaker!"
+      "d1":"Denken \n Fühlen & \n Handeln \n neu programmieren",
+      "d2":"Neurowissenschaft \nHypnose & \nKörperarbeit \nfür dauerhafte Veräderung",
+      "d3":"Inspiration &\nUnterstützung\nin unserer\nCommunity",
+      "d4":{
+        "d41":"Hypno-Imaginatives\nProgrammieren",
+        "d42":"Eine praxiserprobte Methode \ndie Körper, Geist & Gefühl \nnachhaltig verbindet",
+        "d43":"Sei dein eigener",
+        "d44":"Gamechanger"
+      }
+    }
+    
   }
 }

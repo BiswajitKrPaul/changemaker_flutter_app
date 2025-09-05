@@ -9,7 +9,8 @@
    "forgotPassword":"Forgot Password?",
    "clickHereToReset":"No problem, just click here to reset it.",
    "welcomeBack":"Welcome back!",
-   "loginBackMessage":"Log in with your email and password to continue."
+   "loginBackMessage":"Log in with your email and password to continue.",
+   "reprogramYourSub":"Reprogram your subconscious"
   },
   "register":{
     "email": "Email",
@@ -34,17 +35,21 @@
   },
   "onboarding":{
    "title":{
-      "t1":"Start your change now",
-      "t2":"Scientifically based",
-      "t3":"Become part of HIP 3D®",
-      "t4":"What is HIP 3D®?"
+      "t1":"Start your \nchange \n now",
+      "t2":"Scientifically \nbased",
+      "t3":"Become part of the \nHIP 3D® \ncommunity",
+      "t4":"What is\n HIP 3D®"
     },
     "desc":{
-      "d1":"Reinventing thinking, feeling and acting",
-      "d2":"Neuroscience Hypnosis & Bodywork combined",
-      "d3":"Inspiration & Support In the Community",
-      "d4":"Hypno-Imaginative Programming A proven method that sustainably connects body, mind & emotions"
-    },
-     "d5":"Become your own changemaker!"
+      "d1":"Reprogram your \n thinking \n feeling \n and acting",
+      "d2":"Neuroscience \nHypnosis & \nBodywork \nfor lasting change",
+      "d3":"Inspiration &\nSupport\nin our\nCommunity",
+       "d4":{
+        "d41":"Hypno-Imaginative \nProgramming",
+        "d42":"A tried and tested method that sustainably connects body, mind and emotions",
+        "d43":"Be your own",
+        "d44":"Gamechanger"
+      }
+    }
   }
 }

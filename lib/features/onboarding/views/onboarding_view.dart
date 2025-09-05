@@ -2,7 +2,10 @@ import 'package:auto_route/annotations.dart';
 import 'package:changemaker_flutter_app/app_router.dart';
 import 'package:changemaker_flutter_app/app_router.gr.dart';
 import 'package:changemaker_flutter_app/features/onboarding/providers/onboarding_page_provider.dart';
-import 'package:changemaker_flutter_app/features/onboarding/widgets/onboarding_item.dart';
+import 'package:changemaker_flutter_app/features/onboarding/widgets/onboarding_item_first.dart';
+import 'package:changemaker_flutter_app/features/onboarding/widgets/onboarding_item_fourth.dart';
+import 'package:changemaker_flutter_app/features/onboarding/widgets/onboarding_item_second.dart';
+import 'package:changemaker_flutter_app/features/onboarding/widgets/onboarding_item_third.dart';
 import 'package:changemaker_flutter_app/utils/color_utils.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
@@ -20,13 +23,12 @@ class OnboardingView extends ConsumerStatefulWidget {
 class _OnboardingViewState extends ConsumerState<OnboardingView> {
   final PageController _pageController = PageController();
 
-  final bgColors = <Color>[
-    const Color(0xff6390a8),
-    const Color(0xffd2a166),
-    const Color(0xff83ac76),
-    const Color(0xff88fcf9),
+  final List<ConsumerStatefulWidget> _items = [
+    const OnboardingItemFirst(),
+    const OnboardingItemSecond(),
+    const OnboardingItemThird(),
+    const OnboardingItemFourth(),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,9 +46,7 @@ class _OnboardingViewState extends ConsumerState<OnboardingView> {
                     .setPage(value.toDouble());
               },
               itemBuilder: (context, index) {
-                return OnboardingItem(
-                  index: index,
-                );
+                return _items[index];
               },
             ),
             Align(

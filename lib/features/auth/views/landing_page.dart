@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 @RoutePage()
 class LandingPage extends ConsumerStatefulWidget {
@@ -66,16 +67,25 @@ class _LandingPageState extends ConsumerState<LandingPage> {
                   textAlign: TextAlign.center,
                 ),
               ),
-              const FittedBox(
+              FittedBox(
                 child: Text(
-                  'HIP 3d',
-                  style: TextStyle(
+                  'HIP 3D®',
+                  style: GoogleFonts.dmSans(
                     color: Colors.white,
                     fontSize: 50,
                     fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.center,
                 ),
+              ),
+              Text(
+                t.login.reprogramYourSub,
+                style: GoogleFonts.dmSans(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500,
+                ),
+                textAlign: TextAlign.center,
               ),
               const Gap(50),
               SizedBox(

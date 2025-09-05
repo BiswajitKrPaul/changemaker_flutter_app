@@ -45,6 +45,7 @@ void main() async {
 
 class MainApp extends ConsumerWidget {
   const MainApp({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(
