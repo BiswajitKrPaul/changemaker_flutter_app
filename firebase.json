@@ -1,1 +1,53 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"changemaker-22f3c","appId":"1:802072297266:android:b949d106045e46e068e12b","fileOutput":"android/app/google-services.json"}},"ios":{"default":{"projectId":"changemaker-22f3c","appId":"1:802072297266:ios:0781d3fd3c578e8c68e12b","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"changemaker-22f3c","configurations":{"android":"1:802072297266:android:b949d106045e46e068e12b","ios":"1:802072297266:ios:0781d3fd3c578e8c68e12b"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "changemaker-22f3c",
+          "appId": "1:802072297266:android:b949d106045e46e068e12b",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "changemaker-22f3c",
+          "appId": "1:802072297266:ios:0781d3fd3c578e8c68e12b",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "changemaker-22f3c",
+          "configurations": {
+            "android": "1:802072297266:android:b949d106045e46e068e12b",
+            "ios": "1:802072297266:ios:0781d3fd3c578e8c68e12b"
+          }
+        }
+      }
+    }
+  },
+  "emulators": {
+    "dataconnect": {
+      "dataDir": "dataconnect/.dataconnect/pgliteData"
+    }
+  },
+  "dataconnect": {
+    "source": "dataconnect"
+  },
+  "firestore": {
+    "database": "(default)",
+    "location": "asia-south1",
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "remoteconfig": {
+    "template": "remoteconfig.template.json"
+  },
+  "database": {
+    "rules": "database.rules.json"
+  }
+}

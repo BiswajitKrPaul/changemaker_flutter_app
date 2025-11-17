@@ -8,6 +8,8 @@ class UserStore {
 
   final Ref ref;
 
+  Object? get userCreds => null;
+
   Future<void> saveUserDetails(
     UserCredential userCreds, {
     String? gender,
