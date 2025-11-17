@@ -133,7 +133,7 @@ class RegisterPage extends ConsumerWidget {
                       DropdownButtonFormField(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: _getDecoration(t.register.gender),
-                        value: registerState.gender?.name,
+                        initialValue: registerState.gender?.name,
                         validator: ValidationBuilder(
                           localeName: LocaleSettings.currentLocale.languageCode,
                         ).required().build(),
@@ -254,6 +254,7 @@ class RegisterPage extends ConsumerWidget {
                             ),
                     ),
                   ),
+                  const Gap(8),
                 ],
               ),
             ),
